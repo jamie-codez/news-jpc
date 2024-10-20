@@ -2,6 +2,7 @@ package com.jamie.newsapp.presentation.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.paging.compose.LazyPagingItems
 import com.jamie.newsapp.R
 import com.jamie.newsapp.domain.model.Article
+import com.jamie.newsapp.presentation.Dimens.ExtraSmallPadding
 import com.jamie.newsapp.presentation.Dimens.MediumPadding1
 import com.jamie.newsapp.presentation.common.ArticlesList
 import com.jamie.newsapp.presentation.common.SearchBar
@@ -35,7 +37,7 @@ fun HomeScreen(modifier: Modifier = Modifier, articles: LazyPagingItems<Article>
             if (articles.itemCount > 10) {
                 articles.itemSnapshotList.items
                     .slice(IntRange(start = 0, endInclusive = 9))
-                    .joinToString(separator = "\uD83d\uDFE5") { it.title }
+                    .joinToString(separator = " 🔴 ") { it.title }
             } else {
                 ""
             }
@@ -56,12 +58,14 @@ fun HomeScreen(modifier: Modifier = Modifier, articles: LazyPagingItems<Article>
                 .padding(horizontal = MediumPadding1)
         )
         Spacer(modifier = Modifier.height(MediumPadding1))
-        SearchBar(
-            text = "",
-            readOnly = true,
-            onValueChange = {},
-            onClick = { navigate(Route.SearchScreen.route) },
-            onSearch = {})
+        Box(modifier= Modifier.padding(horizontal = 10.dp)) {
+            SearchBar(
+                text = "",
+                readOnly = true,
+                onValueChange = {},
+                onClick = { navigate(Route.SearchScreen.route) },
+                onSearch = {})
+        }
         Spacer(modifier = Modifier.height(MediumPadding1))
         Text(
             text = titles,
@@ -74,7 +78,7 @@ fun HomeScreen(modifier: Modifier = Modifier, articles: LazyPagingItems<Article>
         )
         Spacer(modifier = Modifier.height(MediumPadding1))
         ArticlesList(
-            modifier = Modifier.padding(horizontal = MediumPadding1),
+            modifier = Modifier.padding(horizontal = ExtraSmallPadding),
             articles = articles,
             onClick = { navigate(Route.DetailsScreen.route) })
     }
