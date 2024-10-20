@@ -21,12 +21,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.jamie.newsapp.presentation.Dimens.MediumPadding2
 import com.jamie.newsapp.presentation.Dimens.PageIndicatorWidth
-import com.jamie.newsapp.presentation.onboarding.common.NewsButton
-import com.jamie.newsapp.presentation.onboarding.common.NewsTextButton
+import com.jamie.newsapp.presentation.common.NewsButton
+import com.jamie.newsapp.presentation.common.NewsTextButton
 import com.jamie.newsapp.presentation.onboarding.components.OnboardingPage
 import com.jamie.newsapp.presentation.onboarding.components.PageIndicator
 import kotlinx.coroutines.launch
-import java.nio.file.WatchEvent
 
 @Composable
 fun OnboardingScreen(event:(OnboardingEvent)-> Unit) {

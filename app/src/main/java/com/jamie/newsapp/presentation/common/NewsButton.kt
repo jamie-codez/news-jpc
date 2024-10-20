@@ -1,4 +1,4 @@
-package com.jamie.newsapp.presentation.onboarding.common
+package com.jamie.newsapp.presentation.common
 
 
 import androidx.compose.foundation.border
