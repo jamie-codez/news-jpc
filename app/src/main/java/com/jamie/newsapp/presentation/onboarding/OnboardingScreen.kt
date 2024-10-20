@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 import java.nio.file.WatchEvent
 
 @Composable
-fun OnboardingScreen() {
+fun OnboardingScreen(event:(OnboardingEvent)-> Unit) {
     Column(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) { pages.size }
         val buttonState = remember {
@@ -69,8 +69,8 @@ fun OnboardingScreen() {
                 Spacer(modifier = Modifier.width(10.dp))
                 NewsButton(text = buttonState.value[1], onClick = {
                     scope.launch {
-                        if (pagerState.currentPage == pages.size) {
-                            // TODO: Navigate to home screen
+                        if (pagerState.currentPage == pages.size-1) {
+                            event(OnboardingEvent.SaveAppEntry)
                         } else {
                             pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
                         }
